@@ -2,9 +2,6 @@ import css from './ContactForm.module.css';
 import { Formik, Field, ErrorMessage, Form } from 'formik';
 import { AddProfileSchema } from '../utils/schema';
 import { useId } from 'react';
-import { nanoid } from 'nanoid';
-import { addContact } from '../../redux/contactsSlice';
-import { useDispatch } from 'react-redux';
 
 const INITIAL_VALUES = {
   name: '',
@@ -12,26 +9,11 @@ const INITIAL_VALUES = {
 };
 
 const ContactForm = () => {
-  const dispatch = useDispatch();
-  const handleSubmit = (values, actions) => {
-    const newContact = {
-      name: values.name,
-      number: values.number,
-      id: nanoid(),
-    };
-    actions.resetForm();
-    dispatch(addContact(newContact));
-  };
-
   const nameField = useId();
   const numberField = useId();
 
   return (
-    <Formik
-      initialValues={INITIAL_VALUES}
-      validationSchema={AddProfileSchema}
-      onSubmit={handleSubmit}
-    >
+    <Formik initialValues={INITIAL_VALUES} validationSchema={AddProfileSchema}>
       <Form className={css.container}>
         <label htmlFor={nameField} className={css.labelName}>
           <span>Name</span>
