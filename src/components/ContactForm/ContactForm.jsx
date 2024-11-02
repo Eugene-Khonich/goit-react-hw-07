@@ -1,7 +1,6 @@
 import css from './ContactForm.module.css';
 import { Formik, Field, ErrorMessage, Form } from 'formik';
 import { AddProfileSchema } from '../utils/schema';
-import { useId } from 'react';
 import { useDispatch } from 'react-redux';
 import { addContacts } from '../../redux/contactsOps';
 
@@ -12,11 +11,9 @@ const INITIAL_VALUES = {
 
 const ContactForm = () => {
   const dispatch = useDispatch();
-  const nameField = useId();
-  const numberField = useId();
 
   const handleSubmit = (values, actions) => {
-    event.preventDefault();
+    // event.preventDefault();
     const newContact = {
       name: values.name,
       number: values.number,
@@ -32,14 +29,14 @@ const ContactForm = () => {
       onSubmit={handleSubmit}
     >
       <Form className={css.container}>
-        <label htmlFor={nameField} className={css.labelName}>
+        <label className={css.labelName}>
           <span>Name</span>
-          <Field type="text" name="name" id={nameField} />
+          <Field type="text" name="name" />
           <ErrorMessage name="name" component="span" className={css.errorMsg} />
         </label>
-        <label htmlFor={numberField} className={css.labelNumber}>
+        <label className={css.labelNumber}>
           <span>Number</span>
-          <Field type="text" name="number" id={numberField} />
+          <Field type="text" name="number" />
           <ErrorMessage
             name="number"
             component="span"
