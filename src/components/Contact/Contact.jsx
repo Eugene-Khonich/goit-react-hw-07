@@ -2,7 +2,7 @@ import css from './Contact.module.css';
 import { MdPerson } from 'react-icons/md';
 import { MdPhone } from 'react-icons/md';
 
-const Contact = ({ name, number, id }) => {
+const Contact = ({ name, number }) => {
   return (
     <li className={css.card}>
       <div>
