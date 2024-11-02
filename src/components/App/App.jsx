@@ -1,4 +1,4 @@
-import './App.module.css';
+import css from './App.module.css';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchContacts } from '../../redux/contactsOps';
@@ -17,15 +17,13 @@ const App = () => {
   }, [dispatch]);
 
   return (
-    <div>
-      <h1>Phonebook</h1>
-      <div>
-        <ContactForm />
-        <SearchBox />
-        {isLoading && <p>Request in progress...</p>}
-        {error && <p>We found an error: {error}</p>}
-        <ContactList />
-      </div>
+    <div className={css.container}>
+      <h1 className={css.header}>Phonebook</h1>
+      <ContactForm />
+      <SearchBox />
+      {isLoading && <p>Request in progress...</p>}
+      {error && <p>We found an error: {error}</p>}
+      <ContactList />
     </div>
   );
 };

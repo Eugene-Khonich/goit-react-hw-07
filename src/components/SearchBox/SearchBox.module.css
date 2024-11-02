@@ -5,6 +5,7 @@
   font-weight: 400;
   padding-bottom: 32px;
   gap: 4px;
+  width: 400px;
 }
 .input {
   min-width: 360px;

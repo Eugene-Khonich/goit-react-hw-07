@@ -12,11 +12,6 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-#root {
-  display: flex;
-  margin: 0 auto;
-  flex-direction: column;
-}
 a {
   font-weight: 500;
   color: #646cff;
