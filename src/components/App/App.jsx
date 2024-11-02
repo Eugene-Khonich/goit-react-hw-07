@@ -1,11 +1,11 @@
 import './App.module.css';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectError, selectLoading } from '../../redux/contactsSlice';
+import { fetchContacts } from '../../redux/contactsOps';
+import { selectError, selectLoading } from '../../redux/selectors';
 import ContactForm from '../ContactForm/ContactForm';
 import SearchBox from '../SearchBox/SearchBox';
 import ContactList from '../ContactList/ContactList';
-import { fetchContacts } from '../../redux/contactsOps';
 
 const App = () => {
   const isLoading = useSelector(selectLoading);
@@ -22,7 +22,8 @@ const App = () => {
       <div>
         <ContactForm />
         <SearchBox />
-        {isLoading && !error && <b>Request in progress...</b>}
+        {isLoading && <p>Request in progress...</p>}
+        {error && <p>We found an error: {error}</p>}
         <ContactList />
       </div>
     </div>
